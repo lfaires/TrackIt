@@ -1,15 +1,40 @@
+import axios from 'axios'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { useState } from 'react'
 import logotipo from './assets/logotipo.png'
 
-export default function LoginPage() {
+export default function LoginPage({setToken}) {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const history = useHistory()
+
+    function login() {
+        const body = {email, password}
+
+        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body)
+
+        //inputs e botão desabilitados
+        //animação de loading
+        
+        request.then( response => {
+            setToken(response.data.token)
+            history.push("/hoje")
+        })
+        request.catch( () => {
+            alert("Houve algum erro, tente novamente!")
+            window.location()
+            //botão e input habilitados
+        })
+    }
+
     return (
         <Container>
             <Logo src={logotipo}></Logo>
             <Title>TrackIt</Title>
-            <Input type="text" placeholder="email"></Input>
-            <Input type="password" placeholder="senha"></Input>
-            <Button>Entrar</Button>
+            <Input type="text" placeholder="email" value={email} onChange={ e => setEmail(e.target.value)}></Input>
+            <Input type="password" placeholder="senha" value={password} onChange={ e => setPassword(e.target.value)}></Input>
+            <Button onClick={login}>Entrar</Button>
             <StyledLink to="/cadastro">Não tem uma conta? Cadastre-se!</StyledLink>
         </Container>
     )
@@ -39,7 +64,7 @@ const Input = styled.input`
     border-radius: 5px;
     padding: 10px;
 
-    &::placeholder {
+    & ::placeholder {
         font-size: 20px;
         color: #DBDBDB;
     }

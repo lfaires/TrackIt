@@ -1,17 +1,42 @@
+import { useState} from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { Link, useHistory } from 'react-router-dom'
 import logotipo from './assets/logotipo.png'
 
 export default function SignUpPage() {
+    const [name, setName] = useState("")
+    const [image, setImage] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const history = useHistory()
+    
+    function signUp(){
+        const body ={ email, name, image, password}
+
+        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",body)
+
+        //desabilitar botão e inputs
+
+        request.then( response => {
+            history.push("/")
+            //habilitar botão e input
+        })
+        request.catch( () => {
+            alert("Tente novamente!")
+            //habilitar botão e input
+        })
+    }
+
     return (
         <Container>
             <Logo src={logotipo}></Logo>
             <Title>TrackIt</Title>
-            <Input type="text" placeholder="email"></Input>
-            <Input type="password" placeholder="senha"></Input>
-            <Input type="text" placeholder="nome"></Input>
-            <Input type="text" placeholder="nome"></Input>
-            <Button>Cadastrar</Button>
+            <Input type="text" placeholder="email" value={email} onChange={ e => setEmail(e.target.value)}></Input>
+            <Input type="password" placeholder="senha" value={password} onChange={ e => setPassword(e.target.value)}></Input>
+            <Input type="text" placeholder="nome" value={name} onChange={ e => setName(e.target.value)}></Input>
+            <Input type="text" placeholder="foto" value={image} onChange={ e => setImage(e.target.value)}></Input>
+            <Button onClick={signUp}>Cadastrar</Button>
             <StyledLink to="/">Já tem uma conta? Faça login!</StyledLink>
         </Container>
     )
