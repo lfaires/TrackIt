@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import logotipo from './assets/logotipo.png'
+
 export default function Header() {
     return (
         <Head>
-            <Title>Trackit</Title>
+            <Title>TrackIt</Title>
             <ProfileImg src={logotipo}/>
         </Head>
     )
