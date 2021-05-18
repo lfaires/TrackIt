@@ -57,6 +57,10 @@ const GlobalStyle = createGlobalStyle`
         font-weight: bold;
     }
 
+    button {
+        border: none;
+        background: #FFF;
+    }
 `
 
 export default GlobalStyle;

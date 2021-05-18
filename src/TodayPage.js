@@ -26,8 +26,9 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 98px 0px 101px 0px;
-    padding: 0 18px;
+    margin: 70px 0px;
+    padding: 28px 18px 0 18px;
+
     background: #E5E5E5;
 `
 const Day = styled.div`
