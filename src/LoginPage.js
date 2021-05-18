@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import logotipo from './assets/logotipo.png'
 
 export default function LoginPage() {
@@ -9,7 +10,7 @@ export default function LoginPage() {
             <Input type="text" placeholder="email"></Input>
             <Input type="password" placeholder="senha"></Input>
             <Button>Entrar</Button>
-            <A>Não tem uma conta? Cadastre-se!</A>
+            <StyledLink to="/cadastro">Não tem uma conta? Cadastre-se!</StyledLink>
         </Container>
     )
 }
@@ -23,7 +24,7 @@ const Container = styled.div`
 
 `
 const Logo = styled.img`
-    width: 48vw;
+    width: 42vw;
     height: 86.23px;
 `
 const Title = styled.div`
@@ -33,7 +34,7 @@ const Title = styled.div`
 const Input = styled.input`
     width: 81vw;
     height: 45px;
-    margin: 6px 0;
+    margin-bottom: 6px;
     border: 1px solid #D4D4D4;
     border-radius: 5px;
     padding: 10px;
@@ -53,7 +54,7 @@ const Button = styled.button`
     border: none;
     margin-bottom: 25px;
 `
-const A = styled.a`
+const StyledLink = styled(Link)`
     font-size: 14px;
     color: #52B6FF;
     text-decoration: underline; 
