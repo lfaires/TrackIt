@@ -8,10 +8,10 @@ export default function LoginPage({setToken}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
-    let isDisabled = false;
+    const [isDisabled, setIsDisabled] = useState(false);
 
     function login() {
-        isDisabled = true;
+        setIsDisabled(true);
         const body = {email, password};
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
 
@@ -23,8 +23,7 @@ export default function LoginPage({setToken}) {
         })
         request.catch( () => {
             alert("Houve algum erro, tente novamente!");
-            window.location();
-            isDisabled = false;
+            setIsDisabled(false);
         })
     }
 
@@ -75,6 +74,7 @@ const Button = styled.button`
     color: #FFF;
     font-size: 21px;
     background: #52B6FF;
+    opacity: ${props => !props.disabled ? "1" : "0.7"};
     border-radius: 5px;
     border: none;
     margin-bottom: 25px;
