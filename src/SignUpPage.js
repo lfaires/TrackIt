@@ -20,11 +20,10 @@ export default function SignUpPage() {
 
         request.then( response => {
             history.push("/")
-            setIsDisabled(false)
         })
         request.catch( () => {
             alert("Tente novamente!")
-            //habilitar botão e input
+            setIsDisabled(false)
         })
     }
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Header from './Header'
+import Menu from './Menu'
 import HabitItem from './HabitItem'
 
 export default function TodayPage() {
@@ -15,6 +16,7 @@ export default function TodayPage() {
             <HabitItem/>
             <HabitItem/>
         </Container>
+        <Menu/>
         </>
     )
 }

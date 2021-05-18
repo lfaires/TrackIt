@@ -11,7 +11,7 @@ export default function HabitItem() {
                     <div>Seu recorde: 5 dias</div>
                 </Data>
             </Description>
-            <PlusIcon selected={"selecte"}/>
+            <SelectIcon selected={"selecte"}/>
         </Item>
     )
 }
@@ -28,7 +28,7 @@ const Item = styled.div`
     height: 94px;
 `
 
-const PlusIcon = styled(FaCheckSquare)`
+const SelectIcon = styled(FaCheckSquare)`
     width: 69px;
     height: 69px;
     color: ${props => props.selected === "selected" ? "#8FC549" : "#EBEBEB"};
