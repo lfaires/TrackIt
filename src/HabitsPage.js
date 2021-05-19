@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import { BsPlusSquareFill } from 'react-icons/bs'
 import Header from './Header'
@@ -6,6 +7,17 @@ import AddHabit from './AddHabit'
 import ListHabit from './ListHabit'
 
 export default function HabitsPage() {
+    const [addHabit, setAddHabit] = useState(false);
+
+    function showFormAddHabit() {
+        console.log("to clicando no +")
+        if (addHabit) { 
+            setAddHabit(false)
+        } else {
+            setAddHabit(true)
+        }
+    }
+
     return (
         <>
         <Header/>
@@ -13,14 +25,14 @@ export default function HabitsPage() {
             <Heading>
                 <div>
                     <Title>Meus hábitos</Title>
-                    <PlustIcon/>
+                    <PlustIcon onClick={showFormAddHabit}/>
                 </div>
             </Heading>
+            { addHabit ? <AddHabit/> : ""}
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </SubHeading>
-            <AddHabit/>
-            <ListHabit/>
+            { false ? <ListHabit/> : ""}
         </Container>
         <Menu/>
         </>

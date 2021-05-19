@@ -20,6 +20,7 @@ export default function SignUpPage() {
 
         request.then( response => {
             history.push("/")
+            alert("Cadastro feito com sucesso!")
         })
         request.catch( () => {
             alert("Tente novamente!")

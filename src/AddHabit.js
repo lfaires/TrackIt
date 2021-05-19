@@ -27,6 +27,7 @@ const Item = styled.div`
     background: #FFF;
     border-radius: 5px;
     padding: 18px 18px 15px 18px;
+    margin-bottom: 28px;
 `
 const Input = styled.input`
     width: 100%;
