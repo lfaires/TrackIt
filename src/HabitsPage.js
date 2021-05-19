@@ -3,6 +3,7 @@ import { BsPlusSquareFill } from 'react-icons/bs'
 import Header from './Header'
 import Menu from './Menu'
 import AddHabit from './AddHabit'
+import ListHabit from './ListHabit'
 
 export default function HabitsPage() {
     return (
@@ -19,6 +20,7 @@ export default function HabitsPage() {
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </SubHeading>
             <AddHabit/>
+            <ListHabit/>
         </Container>
         <Menu/>
         </>
