@@ -1,7 +1,13 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import UserContext from './contexts/UserContext';
+import axios from 'axios'
 import styled from 'styled-components'
 
-export default function AddHabit() {
+export default function AddHabit({setAddHabit}) {
+    const { user } = useContext(UserContext)
+    const [habitTitle, setHabitTitle] = useState("")
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [days, setDays] = useState(null)
     const [weekdays, setWeekdays] = useState([
         { id: 1, name: "D", days: 0, isSelected: false},
         { id: 2, name: "S", days: 1, isSelected: false},
@@ -13,7 +19,6 @@ export default function AddHabit() {
     ])
 
     function selectDay(dayId) {
-        console.log("to no onclick", weekdays)
         const newWeekdays = weekdays.map( week => {
             if(week.id === dayId){
                 week.isSelected = !week.isSelected;
@@ -22,20 +27,46 @@ export default function AddHabit() {
         })
         setWeekdays(newWeekdays)
         const selectedDaysID = newWeekdays.filter( item => item.isSelected).map( item => item.days)
-        console.log("dia selecionado", selectedDaysID)
+        setDays(selectedDaysID)
     }
 
+    function saveHabit() {
+        setIsDisabled(true)
+        const body = {name: habitTitle, days}
+        const config = {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        }
+
+        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", body, config)
+
+        request.then( response => {
+            console.log(response)
+            setIsDisabled(false)
+            setAddHabit(false)
+        })
+
+        request.catch( () => {
+            alert("O hábito não foi salvo, tente novamente!")
+            setIsDisabled(false)
+        })
+    }
+
+    function cancelHabit() {
+        setAddHabit(false)
+    }
 
     return (
         <Item>
-            <Input placeholder="nome do hábito"></Input>
+            <Input type="text" placeholder="nome do hábito" onChange={ e => setHabitTitle(e.target.value)} disabled={isDisabled} value={habitTitle}></Input>
             <Weekdays>
                 { weekdays.map( day => 
-                <DayButton key={day.id} selected={day.isSelected} onClick={() => selectDay(day.id, day.isSelected)}>{day.name}</DayButton>)}
+                <DayButton key={day.id} disabled={isDisabled} selected={day.isSelected} onClick={() => selectDay(day.id, day.isSelected)}>{day.name}</DayButton>)}
             </Weekdays>
             <Buttons>
-                <Cancel>Cancelar</Cancel>
-                <Save>Salvar</Save>
+                <Cancel disabled={isDisabled} onClick={cancelHabit}>Cancelar</Cancel>
+                <Save onClick={saveHabit} disabled={isDisabled}>Salvar</Save>
             </Buttons>
         </Item>
     )

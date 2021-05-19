@@ -28,7 +28,7 @@ export default function HabitsPage() {
                     <PlustIcon onClick={showFormAddHabit}/>
                 </div>
             </Heading>
-            { addHabit ? <AddHabit/> : ""}
+            { addHabit ? <AddHabit setAddHabit={setAddHabit}/> : ""}
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </SubHeading>

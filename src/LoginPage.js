@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import logotipo from './assets/logotipo.png';
 
-export default function LoginPage({setToken}) {
+export default function LoginPage({setUser}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -18,7 +18,7 @@ export default function LoginPage({setToken}) {
         //animação de loading
         
         request.then( response => {
-            setToken(response.data.token);
+            setUser(response.data);
             history.push("/hoje");
         })
         request.catch( () => {
