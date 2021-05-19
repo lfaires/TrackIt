@@ -44,8 +44,8 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 68px 36px 199px 36px;
-
+    background: #FFF;
+    padding: 68px 36px 205px 36px;
 `
 const Logo = styled.img`
     width: 42vw;
@@ -54,6 +54,7 @@ const Logo = styled.img`
 const Title = styled.div`
     font: 69px Playball;
     color: #126BA5;
+    margin-bottom: 32px;
 `
 const Input = styled.input`
     width: 81vw;

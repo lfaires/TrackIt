@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         line-height: 1;
         font-family: 'Lexend Deca', sans-serif;
-        background: #FFF;
+        background: #F2F2F2;
     }
     ol, ul {
         list-style: none;

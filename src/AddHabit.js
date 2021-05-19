@@ -54,7 +54,6 @@ const Weekdays = styled.div`
 const Cancel = styled.button`
     height: 35px;
     width:84px;
-    background: #FFF;
     color: #52B6FF;
     font-size: 16px;
     border-radius: 5px;
