@@ -4,6 +4,7 @@ import GlobalStyle from './globalStyles'
 import LoginPage from './LoginPage'
 import SignUpPage from './SignUpPage'
 import TodayPage from './TodayPage'
+import HabitsPage from './HabitsPage'
 import HistoryPage from './HistoryPage'
 
 export default function App() {
@@ -21,6 +22,9 @@ export default function App() {
                 </Route>
                 <Route path="/hoje" exact={true}>
                     <TodayPage />
+                </Route>
+                <Route path="/habitos" exact={true}>
+                    <HabitsPage />
                 </Route>
                 <Route path="/historico" exact={true}>
                     <HistoryPage />

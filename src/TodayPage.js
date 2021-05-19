@@ -8,10 +8,10 @@ export default function TodayPage() {
         <>
         <Header />
         <Container>
-            <Day>
+            <Heading>
                 <Title>Segunda, 17/05</Title>
                 <Tracker>Nenhum hábito concluído ainda</Tracker>
-            </Day>
+            </Heading>
             <HabitItem/>
             <HabitItem/>
             <HabitItem/>
@@ -28,10 +28,9 @@ const Container = styled.div`
     justify-content: center;
     margin: 70px 0px;
     padding: 28px 18px 0 18px;
-
-    background: #E5E5E5;
+    background: #F2F2F2;
 `
-const Day = styled.div`
+const Heading = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
