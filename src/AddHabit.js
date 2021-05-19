@@ -1,17 +1,37 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 
 export default function AddHabit() {
+    const [weekdays, setWeekdays] = useState([
+        { id: 1, name: "D", days: 0, isSelected: false},
+        { id: 2, name: "S", days: 1, isSelected: false},
+        { id: 3, name: "T", days: 2, isSelected: false},
+        { id: 4, name: "Q", days: 3, isSelected: false},
+        { id: 5, name: "Q", days: 4, isSelected: false},
+        { id: 6, name: "S", days: 5, isSelected: false},
+        { id: 7, name: "S", days: 6, isSelected: false}
+    ])
+
+    function selectDay(dayId) {
+        console.log("to no onclick", weekdays)
+        const newWeekdays = weekdays.map( week => {
+            if(week.id === dayId){
+                week.isSelected = !week.isSelected;
+            }
+            return week
+        })
+        setWeekdays(newWeekdays)
+        const selectedDaysID = newWeekdays.filter( item => item.isSelected).map( item => item.days)
+        console.log("dia selecionado", selectedDaysID)
+    }
+
+
     return (
         <Item>
             <Input placeholder="nome do hábito"></Input>
             <Weekdays>
-                <button>D</button>
-                <button>S</button>
-                <button>T</button>
-                <button>Q</button>
-                <button>Q</button>
-                <button>S</button>
-                <button>S</button>
+                { weekdays.map( day => 
+                <DayButton key={day.id} selected={day.isSelected} onClick={() => selectDay(day.id, day.isSelected)}>{day.name}</DayButton>)}
             </Weekdays>
             <Buttons>
                 <Cancel>Cancelar</Cancel>
@@ -19,7 +39,7 @@ export default function AddHabit() {
             </Buttons>
         </Item>
     )
-}
+    }
 
 const Item = styled.div`
     width: 90.7vw;
@@ -42,15 +62,22 @@ const Input = styled.input`
     }
 `
 const Weekdays = styled.div`
-    & button {
-        width: 30px;
-        height: 30px;
-        border-radius: 5px;
-        border: 1px solid #D4D4D4;
-        margin-right: 4px;
-        font-size: 20px;
-        color: #DBDBDB;
-    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+`
+const DayButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #D4D4D4;
+    margin-right: 4px;
+    font-size: 20px;
+    color: ${props => props.selected ? "#FFF" : "#DBDBDB"};
+    background: ${props => props.selected ? "#CFCFCF" : "#FFF"};
 `
 const Cancel = styled.button`
     height: 35px;
