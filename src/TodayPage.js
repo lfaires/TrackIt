@@ -1,9 +1,13 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
+import UserContext from './contexts/UserContext';
 import Header from './Header'
 import Menu from './Menu'
 import HabitItem from './HabitItem'
 
 export default function TodayPage() {
+    const { user } = useContext(UserContext)
+    console.log(user)
     return (
         <>
         <Header />

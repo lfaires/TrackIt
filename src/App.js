@@ -10,7 +10,7 @@ import HistoryPage from './HistoryPage'
 
 export default function App() {
     const [user, setUser] = useState("")
-    console.log(user.token)
+    
     return(
        <BrowserRouter>
             <GlobalStyle/>
