@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import UserContext from './contexts/UserContext';
 import axios from 'axios'
+import Loader from 'react-loader-spinner'
 import styled from 'styled-components'
 
 export default function AddHabit({setAddHabit}) {
@@ -65,7 +66,7 @@ export default function AddHabit({setAddHabit}) {
             </Weekdays>
             <Buttons>
                 <Cancel disabled={isDisabled} onClick={cancelHabit}>Cancelar</Cancel>
-                <Save onClick={saveHabit} disabled={isDisabled}>Salvar</Save>
+                <Save onClick={saveHabit} disabled={isDisabled}>{ !isDisabled ? "Salvar" : <Loader type="ThreeDots" color="#FFF" height={10}/>}</Save>
             </Buttons>
         </Item>
     )
@@ -118,6 +119,9 @@ const Cancel = styled.button`
     margin-right: 23px;
 `
 const Save = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 35px;
     width:84px;
     background: #52B6FF;

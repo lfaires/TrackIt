@@ -2,6 +2,7 @@ import { useState} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 import logotipo from './assets/logotipo.png'
 
 export default function SignUpPage() {
@@ -36,7 +37,7 @@ export default function SignUpPage() {
             <Input type="password" placeholder="senha" value={password} onChange={ e => setPassword(e.target.value)} disabled={isDisabled}></Input>
             <Input type="text" placeholder="nome" value={name} onChange={ e => setName(e.target.value)} disabled={isDisabled}></Input>
             <Input type="text" placeholder="foto" value={image} onChange={ e => setImage(e.target.value)} disabled={isDisabled}></Input>
-            <Button onClick={signUp} disabled={isDisabled}>Cadastrar</Button>
+            <Button onClick={signUp} disabled={isDisabled}>{ !isDisabled ? "Cadastrar" : <Loader type="ThreeDots" color="#FFF" height={15}/>}</Button>
             <StyledLink to="/">Já tem uma conta? Faça login!</StyledLink>
         </Container>
     )
@@ -73,6 +74,9 @@ const Input = styled.input`
     }
 `
 const Button = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 81vw;
     height: 45px;
     color: #FFF;

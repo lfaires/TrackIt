@@ -2,6 +2,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import Loader from 'react-loader-spinner'
 import logotipo from './assets/logotipo.png';
 
 export default function LoginPage({setUser}) {
@@ -33,7 +34,7 @@ export default function LoginPage({setUser}) {
             <Title>TrackIt</Title>
             <Input type="text" placeholder="email" value={email} onChange={ e => setEmail(e.target.value)} disabled={isDisabled}></Input>
             <Input type="password" placeholder="senha" value={password} onChange={ e => setPassword(e.target.value)} disabled={isDisabled}></Input>
-            <Button onClick={login} disabled={isDisabled}>Entrar</Button>
+            <Button onClick={login} disabled={isDisabled}>{ !isDisabled ? "Entrar" : <Loader type="ThreeDots" color="#FFF" height={15}/>}</Button>
             <StyledLink to="/cadastro">Não tem uma conta? Cadastre-se!</StyledLink>
         </Container>
     )
@@ -70,6 +71,9 @@ const Input = styled.input`
     }
 `
 const Button = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 81vw;
     height: 45px;
     color: #FFF;
