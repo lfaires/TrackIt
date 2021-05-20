@@ -2,7 +2,6 @@ import { useContext, useState } from 'react'
 import UserContext from './contexts/UserContext';
 import axios from 'axios'
 import styled from 'styled-components'
-import { FaWindows } from 'react-icons/fa';
 
 export default function AddHabit({setAddHabit}) {
     const { user } = useContext(UserContext)
@@ -42,8 +41,7 @@ export default function AddHabit({setAddHabit}) {
 
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", body, config)
 
-        request.then( response => {
-            console.log(response)
+        request.then( () => {
             setIsDisabled(false)
             setAddHabit(false)
         })

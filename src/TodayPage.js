@@ -1,4 +1,5 @@
-import { useContext } from 'react'
+import axios from 'axios'
+import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import UserContext from './contexts/UserContext';
 import Header from './Header'
@@ -7,7 +8,20 @@ import HabitItem from './HabitItem'
 
 export default function TodayPage() {
     const { user } = useContext(UserContext)
-    console.log(user)
+
+    useEffect(() => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        }
+
+        const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
+
+        request.then( response => console.log(response))
+        request.catch(()=>alert("tenta novamente!"))
+    }
+        ,[])
     return (
         <>
         <Header />

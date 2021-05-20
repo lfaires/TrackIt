@@ -15,7 +15,6 @@ export default function HabitsPage() {
     const [listHabits, setListHabits] = useState(false)
     
     function showFormAddHabit() {
-        console.log("to clicando no +")
         if (addHabit) { 
             setAddHabit(false)
         } else {
@@ -23,7 +22,6 @@ export default function HabitsPage() {
         }
     }
     
-    console.log("na pagina de lista:",user.token)
     useEffect( () =>{
         const config ={
             headers: {
@@ -34,7 +32,6 @@ export default function HabitsPage() {
         
         request.then( response => {
             setHabits(response.data)
-            console.log("habitos:",response.data)
             if(listHabits !==0){
                 setListHabits(true)
             }})

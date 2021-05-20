@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import UserContext from './contexts/UserContext';
 import styled from 'styled-components'
-import logotipo from './assets/logotipo.png'
 
 export default function Header() {
     const { user } = useContext(UserContext)
