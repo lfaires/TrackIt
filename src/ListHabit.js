@@ -1,8 +1,11 @@
+import axios from 'axios'
 import styled from 'styled-components'
 import { BsTrash } from 'react-icons/bs'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import UserContext from './contexts/UserContext';
 
 export default function ListHabit({habit}) {
+    const { user } = useContext(UserContext)
     const [weekdays, setWeekdays] = useState([
         { id: 1, name: "D", days: 0},
         { id: 2, name: "S", days: 1},
@@ -20,6 +23,19 @@ export default function ListHabit({habit}) {
         }
     })})
 
+    function deleteHabit(habitId) {
+        if(window.confirm("Você realmente deseja excluir este hábito?")){
+            const config ={
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                }
+            }
+            const request = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitId}`,config)
+
+            request.then(() => alert("Deletado"))
+        } 
+    }
+
     return (
         <Item>
             <div>
@@ -30,7 +46,7 @@ export default function ListHabit({habit}) {
                     )}
                 </Weekdays>
             </div>
-            <TrashIcon />
+            <TrashIcon onClick={() => deleteHabit(habit.id)}/>
         </Item>
     )   
 }

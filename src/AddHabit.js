@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import UserContext from './contexts/UserContext';
 import axios from 'axios'
 import styled from 'styled-components'
+import { FaWindows } from 'react-icons/fa';
 
 export default function AddHabit({setAddHabit}) {
     const { user } = useContext(UserContext)
