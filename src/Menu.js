@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import { useHistory } from 'react-router-dom'
 
 export default function Menu() {
@@ -16,13 +18,26 @@ export default function Menu() {
         history.push("/historico")
     }
 
+    const percentage = 88;
     return(
         <>
         <Options>
             <Option onClick={goToHabitsPage}>Hábitos</Option>
             <Option onClick={goToHistoryPage}>Histórico</Option>
         </Options>
-        <Today onClick={goToTodayPage}>Hoje</Today>
+        <Today onClick={goToTodayPage}>
+            <CircularProgressbar 
+            value={percentage} strokeWidth={10} text={'Hoje'}
+            styles={buildStyles({
+                pathColor: `rgba(255, 255, 255, ${percentage / 100})`,
+                strokeLinecap: 'round',
+                trailColor: 'none',
+                textSize: '25px',
+                textColor: '#FFF',
+            })}
+            />    
+        </Today>
+        
         </>
     )
 }
@@ -52,8 +67,6 @@ const Today = styled.button`
     bottom: 10px;
     left: 39vw;
     z-index: 3;
-    font-size: 18px;
-    color: #FFF;
     width: 91px;
     height: 91px;
     background: #52B6FF;

@@ -32,7 +32,7 @@ export default function HabitsPage() {
         
         request.then( response => {
             setHabits(response.data)
-            if(listHabits !==0){
+            if(habits.length !==0){
                 setListHabits(true)
             }})
     },[])
@@ -50,7 +50,7 @@ export default function HabitsPage() {
                 </div>
             </Heading>
             { addHabit ? <AddHabit setAddHabit={setAddHabit}/> : ""}
-            {!listHabits ? 
+            {listHabits ? 
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </SubHeading> : 

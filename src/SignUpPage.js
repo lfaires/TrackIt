@@ -22,7 +22,7 @@ export default function SignUpPage() {
             history.push("/")
             alert("Cadastro feito com sucesso!")
         })
-        request.catch( () => {
+        request.catch( (error) => {
             alert("Tente novamente!")
             setIsDisabled(false)
         })
