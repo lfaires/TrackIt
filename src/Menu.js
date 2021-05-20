@@ -1,9 +1,12 @@
+import { useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useHistory } from 'react-router-dom'
+import ProgressContext from './contexts/ProgressContext';
 
 export default function Menu() {
+    const { progress } = useContext(ProgressContext)
     const history = useHistory()
 
     function goToHabitsPage(){
@@ -18,7 +21,8 @@ export default function Menu() {
         history.push("/historico")
     }
 
-    const percentage = 88;
+    let percentage = progress
+
     return(
         <>
         <Options>
@@ -29,7 +33,7 @@ export default function Menu() {
             <CircularProgressbar 
             value={percentage} strokeWidth={10} text={'Hoje'}
             styles={buildStyles({
-                pathColor: `rgba(255, 255, 255, ${percentage / 100})`,
+                pathColor: `rgba(255, 255, 255, ${percentage/ 100})`,
                 strokeLinecap: 'round',
                 trailColor: 'none',
                 textSize: '25px',

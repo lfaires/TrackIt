@@ -12,7 +12,7 @@ import HistoryPage from './HistoryPage'
 export default function App() {
     const [user, setUser] = useState("")
     const [progress, setProgress] = useState(0)
-
+    
     return(
        <BrowserRouter>
             <GlobalStyle/>

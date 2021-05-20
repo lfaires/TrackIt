@@ -1,22 +1,24 @@
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import UserContext from './contexts/UserContext';
 import styled from 'styled-components'
 import { FaCheckSquare } from 'react-icons/fa'
 
-export default function HabitItem({habit, setCount, count}) {
+export default function HabitItem({habit, count, setCount}) {
     const { user } = useContext(UserContext)
     const [selected,setSelected] = useState(false)
-    
+    const history = useHistory();
+
     function selectHabit() {
         habit.done = !habit.done
         setSelected(habit.done)
         if(habit.done){
-            setCount(count+1)
             sendHabitDone()
+            setCount(count+1)
         } else {
-            setCount(count-1)
             sendHabitNotDone()
+            setCount(count-1)
         }
     }
 
@@ -27,7 +29,8 @@ export default function HabitItem({habit, setCount, count}) {
             }
         }
         const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}/check`, habit, config)
-    
+        
+        request.then(() => setCount(count+1))
         request.catch(() => alert("Erro!"))
     }
 
@@ -39,7 +42,8 @@ export default function HabitItem({habit, setCount, count}) {
         }
         const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}/uncheck`, habit, config)
     
-        request.then(response => console.log(response))
+        request.then(() => setCount(count-1))
+            
         request.catch(() => alert("Erro!"))
     }
 

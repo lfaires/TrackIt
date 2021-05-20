@@ -12,7 +12,7 @@ export default function HabitsPage() {
     const { user } = useContext(UserContext)
     const [habits, setHabits] = useState([])
     const [addHabit, setAddHabit] = useState(false);
-    const [listHabits, setListHabits] = useState(false)
+    const [count, setCount] = useState(0)
     
     function showFormAddHabit() {
         if (addHabit) { 
@@ -30,15 +30,10 @@ export default function HabitsPage() {
         }
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
         
-        request.then( response => {
-            setHabits(response.data)
-            if(habits.length !==0){
-                setListHabits(true)
-            }})
-    },[])
+        request.then( response => setHabits(response.data))
+    },[count])
     
-    
-
+    console.log("muda o valor?",habits)
     return (
         <>
         <Header/>
@@ -49,12 +44,12 @@ export default function HabitsPage() {
                     <PlustIcon onClick={showFormAddHabit}/>
                 </div>
             </Heading>
-            { addHabit ? <AddHabit setAddHabit={setAddHabit}/> : ""}
-            {listHabits ? 
+            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} setCount={setCount}/> : ""}
+            {habits.length === 0 ? 
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </SubHeading> : 
-            habits.map( habit => <ListHabit key={habit.id} habit={habit}/>)}
+            habits.map( habit => <ListHabit key={habit.id} habit={habit} count={count} setCount={setCount}/>)}
             
         </Container>
         <Menu/>

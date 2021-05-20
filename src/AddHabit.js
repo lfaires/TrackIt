@@ -4,7 +4,7 @@ import axios from 'axios'
 import Loader from 'react-loader-spinner'
 import styled from 'styled-components'
 
-export default function AddHabit({setAddHabit}) {
+export default function AddHabit({setAddHabit, count, setCount}) {
     const { user } = useContext(UserContext)
     const [habitTitle, setHabitTitle] = useState("")
     const [isDisabled, setIsDisabled] = useState(false);
@@ -42,9 +42,11 @@ export default function AddHabit({setAddHabit}) {
 
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", body, config)
 
-        request.then( () => {
+        request.then( (response) => {
+            console.log(response.data)
             setIsDisabled(false)
             setAddHabit(false)
+            setCount(count+1)
         })
 
         request.catch( () => {

@@ -4,7 +4,7 @@ import { BsTrash } from 'react-icons/bs'
 import { useState, useContext } from 'react'
 import UserContext from './contexts/UserContext';
 
-export default function ListHabit({habit}) {
+export default function ListHabit({habit, count, setCount}) {
     const { user } = useContext(UserContext)
     const [weekdays, setWeekdays] = useState([
         { id: 1, name: "D", days: 0},
@@ -32,7 +32,10 @@ export default function ListHabit({habit}) {
             }
             const request = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitId}`,config)
 
-            request.then(() => alert("Hábito deletado com sucesso!"))
+            request.then(() => {
+                alert("Hábito deletado com sucesso!")
+                setCount(count+1)
+            })
 
             request.catch(() => alert("Tente novamente!"))
         } 
