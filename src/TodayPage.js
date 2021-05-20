@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useContext, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import UserContext from './contexts/UserContext';
 import Header from './Header'
@@ -8,7 +8,15 @@ import HabitItem from './HabitItem'
 
 export default function TodayPage() {
     const { user } = useContext(UserContext)
-
+    const [habits, setHabits] = useState([])
+    const [countHabit, setCountHabit] = useState(0)
+    
+    function PercentHabit(){
+        const percent = (countHabit/habits.length)
+        const newPercent = (100*percent).toFixed(0)
+        return newPercent
+    }
+   
     useEffect(() => {
         const config = {
             headers: {
@@ -18,21 +26,20 @@ export default function TodayPage() {
 
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
 
-        request.then( response => console.log(response))
+        request.then( response => setHabits(response.data))
         request.catch(()=>alert("tenta novamente!"))
     }
         ,[])
+
     return (
         <>
         <Header />
         <Container>
             <Heading>
                 <Title>Segunda, 17/05</Title>
-                <Tracker>Nenhum hábito concluído ainda</Tracker>
+                {(countHabit !== 0) ? <Tracker selected>{PercentHabit()}% dos hábitos concluídos</Tracker> :<Tracker>Nenhum hábito concluído ainda</Tracker>}
             </Heading>
-            <HabitItem/>
-            <HabitItem/>
-            <HabitItem/>
+            { habits.map( habit => <HabitItem key={habit.id} habit={habit} setCount={setCountHabit} count={countHabit} />)}
         </Container>
         <Menu/>
         </>
@@ -61,6 +68,7 @@ const Title = styled.span`
 `
 
 const Tracker = styled.span`
+    margin-top: 5px;
     font-size: 18px;
-    color: #BABABA;
+    color: ${props => props.selected ? "#8FC549" :"#BABABA"};
 `

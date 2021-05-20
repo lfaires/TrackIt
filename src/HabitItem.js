@@ -1,17 +1,30 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import { FaCheckSquare } from 'react-icons/fa'
 
-export default function HabitItem() {
+export default function HabitItem({habit, setCount, count}) {
+    const [selected,setSelected] = useState(false)
+    
+    function selectHabit() {
+        habit.done = !habit.done
+        setSelected(habit.done)
+        if(habit.done){
+            setCount(count+1)
+        } else {
+            setCount(count-1)
+        }
+    }
+
     return (
         <Item>
             <Description>
-                <Title>Ler 1 capítulo de livro</Title>
-                <Data>
-                    <div>Sequência atual: 3 dias</div>
-                    <div>Seu recorde: 5 dias</div>
+                <Title>{habit.name}</Title>
+                <Data selected={habit.done}>
+                    <div>Sequência atual: <span>{habit.currentSequence} dias</span></div>
+                    <div>Seu recorde: {habit.highestSequence} dias</div>
                 </Data>
             </Description>
-            <SelectIcon selected={"selecte"}/>
+            <SelectIcon onClick={selectHabit} selected={habit.done}/>
         </Item>
     )
 }
@@ -31,7 +44,7 @@ const Item = styled.div`
 const SelectIcon = styled(FaCheckSquare)`
     width: 69px;
     height: 69px;
-    color: ${props => props.selected === "selected" ? "#8FC549" : "#EBEBEB"};
+    color: ${props => props.selected ? "#8FC549" : "#EBEBEB"};
 `
 
 const Description = styled.div`
@@ -48,4 +61,8 @@ const Title = styled.div`
 
 const Data = styled.div`
     font-size: 13px;
+
+    & span {
+        color:${props => props.selected ? "#8FC549" : "#666"};
+    }
 `

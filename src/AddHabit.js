@@ -61,7 +61,7 @@ export default function AddHabit({setAddHabit}) {
             <Input type="text" placeholder="nome do hábito" onChange={ e => setHabitTitle(e.target.value)} disabled={isDisabled} value={habitTitle}></Input>
             <Weekdays>
                 { weekdays.map( day => 
-                <DayButton key={day.id} disabled={isDisabled} selected={day.isSelected} onClick={() => selectDay(day.id, day.isSelected)}>{day.name}</DayButton>)}
+                <DayButton key={day.id} disabled={isDisabled} selected={day.isSelected} onClick={() => selectDay(day.id)}>{day.name}</DayButton>)}
             </Weekdays>
             <Buttons>
                 <Cancel disabled={isDisabled} onClick={cancelHabit}>Cancelar</Cancel>
