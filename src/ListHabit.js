@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import { BsTrash } from 'react-icons/bs'
 import { useState, useContext } from 'react'
 import UserContext from './contexts/UserContext';
+import CountContext from './contexts/CountContext';
 
-export default function ListHabit({habit, count, setCount}) {
+export default function ListHabit({habit}) {
     const { user } = useContext(UserContext)
+    const { count, setCount } = useContext(CountContext)
     const [weekdays, setWeekdays] = useState([
         { id: 1, name: "D", days: 0},
         { id: 2, name: "S", days: 1},

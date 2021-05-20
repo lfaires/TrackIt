@@ -7,13 +7,13 @@ import Header from './Header'
 import Menu from './Menu'
 import HabitItem from './HabitItem'
 import ProgressContext from './contexts/ProgressContext';
+import CountContext from './contexts/CountContext';
 
 export default function TodayPage() {
     const { user } = useContext(UserContext)
+    const { count, setCount } = useContext(CountContext)
     const { progress, setProgress } = useContext(ProgressContext)
     const [habits, setHabits] = useState([])
-    const [countHabit, setCountHabit] = useState(0)
-    const [count, setCount] = useState(0)
     const now = dayjs()
     const daysOfweek = [
         { id:0, name: "Domingo" },

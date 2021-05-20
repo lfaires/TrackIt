@@ -8,7 +8,7 @@ import ProgressContext from './contexts/ProgressContext';
 export default function Menu() {
     const { progress } = useContext(ProgressContext)
     const history = useHistory()
-
+    console.log("no menu",progress)
     function goToHabitsPage(){
         history.push("/habitos")
     }
@@ -21,7 +21,7 @@ export default function Menu() {
         history.push("/historico")
     }
 
-    let percentage = progress
+    let percentage = (progress*100).toFixed(0)
 
     return(
         <>
@@ -33,7 +33,7 @@ export default function Menu() {
             <CircularProgressbar 
             value={percentage} strokeWidth={10} text={'Hoje'}
             styles={buildStyles({
-                pathColor: `rgba(255, 255, 255, ${percentage/ 100})`,
+                pathColor: `rgb(255, 255, 255)`,
                 strokeLinecap: 'round',
                 trailColor: 'none',
                 textSize: '25px',

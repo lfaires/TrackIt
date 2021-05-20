@@ -1,15 +1,15 @@
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import UserContext from './contexts/UserContext';
+import CountContext from './contexts/CountContext';
 import styled from 'styled-components'
 import { FaCheckSquare } from 'react-icons/fa'
 
-export default function HabitItem({habit, count, setCount}) {
+export default function HabitItem({habit}) {
     const { user } = useContext(UserContext)
+    const { count, setCount } = useContext(CountContext)
     const [selected,setSelected] = useState(false)
-    const history = useHistory();
-
+   
     function selectHabit() {
         habit.done = !habit.done
         setSelected(habit.done)

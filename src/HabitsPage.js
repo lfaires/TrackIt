@@ -7,12 +7,13 @@ import Menu from './Menu'
 import AddHabit from './AddHabit'
 import ListHabit from './ListHabit'
 import UserContext from './contexts/UserContext';
+import CountContext from './contexts/CountContext';
 
 export default function HabitsPage() {
     const { user } = useContext(UserContext)
+    const { count } = useContext(CountContext)
     const [habits, setHabits] = useState([])
     const [addHabit, setAddHabit] = useState(false);
-    const [count, setCount] = useState(0)
     
     function showFormAddHabit() {
         if (addHabit) { 
@@ -44,12 +45,12 @@ export default function HabitsPage() {
                     <PlustIcon onClick={showFormAddHabit}/>
                 </div>
             </Heading>
-            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} setCount={setCount}/> : ""}
+            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} /> : ""}
             {habits.length === 0 ? 
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </SubHeading> : 
-            habits.map( habit => <ListHabit key={habit.id} habit={habit} count={count} setCount={setCount}/>)}
+            habits.map( habit => <ListHabit key={habit.id} habit={habit} />)}
             
         </Container>
         <Menu/>

@@ -1,11 +1,13 @@
 import { useContext, useState } from 'react'
 import UserContext from './contexts/UserContext';
+import CountContext from './contexts/CountContext';
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 import styled from 'styled-components'
 
-export default function AddHabit({setAddHabit, count, setCount}) {
+export default function AddHabit({setAddHabit}) {
     const { user } = useContext(UserContext)
+    const { count, setCount } = useContext(CountContext)
     const [habitTitle, setHabitTitle] = useState("")
     const [isDisabled, setIsDisabled] = useState(false);
     const [days, setDays] = useState(null)

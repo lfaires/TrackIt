@@ -2,6 +2,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import { useState } from 'react'
 import GlobalStyle from './globalStyles'
 import UserContext from './contexts/UserContext';
+import CountContext from './contexts/CountContext';
 import ProgressContext from './contexts/ProgressContext';
 import LoginPage from './LoginPage'
 import SignUpPage from './SignUpPage'
@@ -12,11 +13,14 @@ import HistoryPage from './HistoryPage'
 export default function App() {
     const [user, setUser] = useState("")
     const [progress, setProgress] = useState(0)
-    
+    const [count, setCount] = useState(0)
+
     return(
        <BrowserRouter>
             <GlobalStyle/>
             <UserContext.Provider value={{user, setUser}}>
+            <CountContext.Provider value={{count, setCount}}>
+            <ProgressContext.Provider value={{progress, setProgress}}>
                 <Switch>
                     <Route path="/" exact={true}>
                         <LoginPage setUser={setUser}/>
@@ -24,7 +28,6 @@ export default function App() {
                     <Route path="/cadastro" exact={true}>
                         <SignUpPage />
                     </Route>
-                    <ProgressContext.Provider value={{progress, setProgress}}>
                     <Route path="/hoje" exact={true}>
                         <TodayPage />
                     </Route>
@@ -34,8 +37,9 @@ export default function App() {
                     <Route path="/historico" exact={true}>
                         <HistoryPage />
                     </Route>
-                    </ProgressContext.Provider>
                 </Switch>
+            </ProgressContext.Provider>
+            </CountContext.Provider>
             </UserContext.Provider>
        </BrowserRouter>
     )
