@@ -17,7 +17,7 @@ export default function AddHabit({setAddHabit}) {
         { id: 6, name: "S", days: 5, isSelected: false},
         { id: 7, name: "S", days: 6, isSelected: false}
     ])
-    console.log(user)
+
     function selectDay(dayId) {
         const newWeekdays = weekdays.map( week => {
             if(week.id === dayId){

@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 import { BsPlusSquareFill } from 'react-icons/bs'
 import Header from './Header'
 import Menu from './Menu'
 import AddHabit from './AddHabit'
 import ListHabit from './ListHabit'
+import UserContext from './contexts/UserContext';
 
 export default function HabitsPage() {
+    const { user } = useContext(UserContext)
+    const [habits, setHabits] = useState([])
     const [addHabit, setAddHabit] = useState(false);
-
+    const [listHabits, setListHabits] = useState(false)
+    
     function showFormAddHabit() {
         console.log("to clicando no +")
         if (addHabit) { 
@@ -17,6 +22,25 @@ export default function HabitsPage() {
             setAddHabit(true)
         }
     }
+    
+    console.log("na pagina de lista:",user.token)
+    useEffect( () =>{
+        const config ={
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        }
+        const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
+        
+        request.then( response => {
+            setHabits(response.data)
+            console.log("habitos:",response.data)
+            if(listHabits !==0){
+                setListHabits(true)
+            }})
+    },[])
+    
+    
 
     return (
         <>
@@ -29,10 +53,12 @@ export default function HabitsPage() {
                 </div>
             </Heading>
             { addHabit ? <AddHabit setAddHabit={setAddHabit}/> : ""}
+            {!listHabits ? 
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
-            </SubHeading>
-            { false ? <ListHabit/> : ""}
+            </SubHeading> : 
+            habits.map( habit => <ListHabit key={habit.id} habit={habit}/>)}
+            
         </Container>
         <Menu/>
         </>
