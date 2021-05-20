@@ -1,4 +1,5 @@
 import axios from 'axios'
+import dayjs from 'dayjs'
 import { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import UserContext from './contexts/UserContext';
@@ -10,7 +11,22 @@ export default function TodayPage() {
     const { user } = useContext(UserContext)
     const [habits, setHabits] = useState([])
     const [countHabit, setCountHabit] = useState(0)
-    
+    const now = dayjs()
+    const daysOfweek = [
+        { id:0, name: "Domingo" },
+        { id:1, name: "Segunda" },
+        { id:2, name: "Terça" },
+        { id:3, name: "Quarta" },
+        { id:4, name: "Quinta" },
+        { id:5, name: "Sexta" },
+        { id:6, name: "Sábado" },
+    ]
+   
+    function weekday() {
+        const dayOfWeek = daysOfweek.filter( item => item.id === now.day())
+        return dayOfWeek[0].name
+    }
+
     function PercentHabit(){
         const percent = (countHabit/habits.length)
         const newPercent = (100*percent).toFixed(0)
@@ -36,7 +52,7 @@ export default function TodayPage() {
         <Header />
         <Container>
             <Heading>
-                <Title>Segunda, 17/05</Title>
+                <Title>{weekday()}, {now.format("DD/MM")}</Title>
                 {(countHabit !== 0) ? <Tracker selected>{PercentHabit()}% dos hábitos concluídos</Tracker> :<Tracker>Nenhum hábito concluído ainda</Tracker>}
             </Heading>
             { habits.map( habit => <HabitItem key={habit.id} habit={habit} setCount={setCountHabit} count={countHabit} />)}
