@@ -32,7 +32,9 @@ export default function ListHabit({habit}) {
             }
             const request = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitId}`,config)
 
-            request.then(() => alert("Deletado"))
+            request.then(() => alert("Hábito deletado com sucesso!"))
+
+            request.catch(() => alert("Tente novamente!"))
         } 
     }
 

@@ -1,11 +1,15 @@
+import { useContext } from 'react'
+import UserContext from './contexts/UserContext';
 import styled from 'styled-components'
 import logotipo from './assets/logotipo.png'
 
 export default function Header() {
+    const { user } = useContext(UserContext)
+
     return (
         <Head>
             <Title>TrackIt</Title>
-            <ProfileImg src={logotipo}/>
+            <ProfileImg src={user.image}/>
         </Head>
     )
 }
