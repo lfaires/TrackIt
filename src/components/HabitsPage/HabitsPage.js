@@ -3,12 +3,12 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import { BsPlusSquareFill } from 'react-icons/bs'
-import Header from './Header'
-import Menu from './Menu'
+import Header from '../Header'
+import Menu from '../Menu'
 import AddHabit from './AddHabit'
 import ListHabit from './ListHabit'
-import UserContext from './contexts/UserContext';
-import CountContext from './contexts/CountContext';
+import UserContext from '../../contexts/UserContext';
+import CountContext from '../../contexts/CountContext';
 
 export default function HabitsPage() {
     const { user } = useContext(UserContext)
@@ -37,7 +37,7 @@ export default function HabitsPage() {
         request.then( response => setHabits(response.data))
         request.catch( () => history.pushState("/habitos"))
     },[count])
-    console.log("deposi de cancelar", days)
+
     return (
         <>
         <Header/>

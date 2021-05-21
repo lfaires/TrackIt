@@ -1,31 +1,30 @@
-import { useState} from 'react'
-import styled from 'styled-components'
-import axios from 'axios'
-import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios';
+import styled from 'styled-components';
+import { Link, useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import Loader from 'react-loader-spinner'
-import logotipo from './assets/logotipo.png'
+import logotipo from '../assets/logotipo.png';
 
-export default function SignUpPage() {
-    const [name, setName] = useState("")
-    const [image, setImage] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+export default function LoginPage({setUser}) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const history = useHistory();
     const [isDisabled, setIsDisabled] = useState(false);
-    const history = useHistory()
-    
-    function signUp(){
-        setIsDisabled(true)
-        const body ={ email, name, image, password}
 
-        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",body)
+    function login() {
+        setIsDisabled(true);
+        const body = {email, password};
+        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
 
+        //animação de loading
+        
         request.then( response => {
-            history.push("/")
-            alert("Cadastro feito com sucesso!")
+            setUser(response.data);
+            history.push("/hoje");
         })
-        request.catch( (error) => {
-            alert("Tente novamente!")
-            setIsDisabled(false)
+        request.catch( () => {
+            alert("Houve algum erro, tente novamente!");
+            setIsDisabled(false);
         })
     }
 
@@ -35,10 +34,8 @@ export default function SignUpPage() {
             <Title>TrackIt</Title>
             <Input type="text" placeholder="email" value={email} onChange={ e => setEmail(e.target.value)} disabled={isDisabled}></Input>
             <Input type="password" placeholder="senha" value={password} onChange={ e => setPassword(e.target.value)} disabled={isDisabled}></Input>
-            <Input type="text" placeholder="nome" value={name} onChange={ e => setName(e.target.value)} disabled={isDisabled}></Input>
-            <Input type="text" placeholder="foto" value={image} onChange={ e => setImage(e.target.value)} disabled={isDisabled}></Input>
-            <Button onClick={signUp} disabled={isDisabled}>{ !isDisabled ? "Cadastrar" : <Loader type="ThreeDots" color="#FFF" height={15}/>}</Button>
-            <StyledLink to="/">Já tem uma conta? Faça login!</StyledLink>
+            <Button onClick={login} disabled={isDisabled}>{ !isDisabled ? "Entrar" : <Loader type="ThreeDots" color="#FFF" height={15}/>}</Button>
+            <StyledLink to="/cadastro">Não tem uma conta? Cadastre-se!</StyledLink>
         </Container>
     )
 }
@@ -49,7 +46,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     background: #FFF;
-    padding: 68px 36px 97px 36px;
+    padding: 68px 36px 205px 36px;
 `
 const Logo = styled.img`
     width: 42vw;
@@ -63,12 +60,12 @@ const Title = styled.div`
 const Input = styled.input`
     width: 81vw;
     height: 45px;
-    margin-bottom: 6px; 
+    margin-bottom: 6px;
     border: 1px solid #D4D4D4;
     border-radius: 5px;
     padding: 10px;
 
-    &::placeholder {
+    & ::placeholder {
         font-size: 20px;
         color: #DBDBDB;
     }

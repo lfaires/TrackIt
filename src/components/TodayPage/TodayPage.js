@@ -2,12 +2,12 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
-import UserContext from './contexts/UserContext';
-import Header from './Header'
-import Menu from './Menu'
+import UserContext from '../../contexts/UserContext';
+import Header from '../Header'
+import Menu from '../Menu'
 import HabitItem from './HabitItem'
-import ProgressContext from './contexts/ProgressContext';
-import CountContext from './contexts/CountContext';
+import ProgressContext from '../../contexts/ProgressContext';
+import CountContext from '../../contexts/CountContext';
 
 export default function TodayPage() {
     const { user } = useContext(UserContext)
@@ -24,7 +24,7 @@ export default function TodayPage() {
         { id:5, name: "Sexta" },
         { id:6, name: "Sábado" },
     ]
-   console.log("tela hoje", habits)
+   
     function weekday() {
         const dayOfWeek = daysOfweek.filter( item => item.id === now.day())
         return dayOfWeek[0].name

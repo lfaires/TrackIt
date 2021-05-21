@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Header from './Header'
-import Menu from './Menu'
+import Header from '../Header'
+import Menu from '../Menu'
 
 export default function HistoryPage() {
     return (

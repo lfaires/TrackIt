@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useHistory } from 'react-router-dom'
-import ProgressContext from './contexts/ProgressContext';
+import ProgressContext from '../contexts/ProgressContext';
 
 export default function Menu() {
     const { progress } = useContext(ProgressContext)
     const history = useHistory()
-    console.log("no menu",progress)
+    
     function goToHabitsPage(){
         history.push("/habitos")
     }

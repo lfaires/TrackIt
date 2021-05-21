@@ -1,14 +1,14 @@
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import { useState } from 'react'
-import GlobalStyle from './globalStyles'
-import UserContext from './contexts/UserContext';
-import CountContext from './contexts/CountContext';
-import ProgressContext from './contexts/ProgressContext';
+import GlobalStyle from '../globalStyles'
+import UserContext from '../contexts/UserContext';
+import CountContext from '../contexts/CountContext';
+import ProgressContext from '../contexts/ProgressContext';
 import LoginPage from './LoginPage'
 import SignUpPage from './SignUpPage'
-import TodayPage from './TodayPage'
-import HabitsPage from './HabitsPage'
-import HistoryPage from './HistoryPage'
+import TodayPage from './TodayPage/TodayPage'
+import HabitsPage from './HabitsPage/HabitsPage'
+import HistoryPage from './HistoryPage/HistoryPage'
 
 export default function App() {
     const [user, setUser] = useState("")

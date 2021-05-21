@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
-import UserContext from './contexts/UserContext';
-import CountContext from './contexts/CountContext';
+import UserContext from '../../contexts/UserContext';
+import CountContext from '../../contexts/CountContext';
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 import styled from 'styled-components'
@@ -44,7 +44,6 @@ export default function AddHabit({setAddHabit, days, setDays}) {
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", body, config)
 
         request.then( (response) => {
-            console.log(response.data)
             setIsDisabled(false)
             setAddHabit(false)
             setCount(count+1)

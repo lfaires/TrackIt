@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useContext } from 'react'
-import UserContext from './contexts/UserContext';
-import CountContext from './contexts/CountContext';
+import UserContext from '../../contexts/UserContext';
+import CountContext from '../../contexts/CountContext';
 import styled from 'styled-components'
 import { FaCheckSquare } from 'react-icons/fa'
 

@@ -2,8 +2,8 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { BsTrash } from 'react-icons/bs'
 import { useState, useContext } from 'react'
-import UserContext from './contexts/UserContext';
-import CountContext from './contexts/CountContext';
+import UserContext from '../../contexts/UserContext';
+import CountContext from '../../contexts/CountContext';
 
 export default function ListHabit({habit}) {
     const { user } = useContext(UserContext)
