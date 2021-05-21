@@ -36,7 +36,7 @@ export default function HabitsPage() {
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
         
         request.then( response => setHabits(response.data))
-        request.catch( () => history.pushState("/habitos"))
+        request.catch( () => history.push("/habitos"))
     },[count])
 
     return (

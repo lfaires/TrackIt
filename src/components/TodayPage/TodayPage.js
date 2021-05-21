@@ -46,14 +46,13 @@ export default function TodayPage() {
 
         request.then( response => {
             setHabits(response.data)
-            const ndone = response.data.filter( item => item.done).length
-            console.log("qntds habitos feitos:",ndone) 
-            const total = response.data.length
-            console.log("qtds total de habitos",total)
-            const p = ndone/total
-            setProgress(p)
+            const doneHabits = response.data.filter( item => item.done).length 
+            const totalHabits = response.data.length
+            const percent = doneHabits/totalHabits
+            setProgress(percent)
         })
-        request.catch(()=>alert("tenta novamente!"))},[count])
+        request.catch(()=>alert("tenta novamente!"))
+    },[count])
    
         function selectHabit(idHabit) {
             const newHabits = habits.map( habit => {
