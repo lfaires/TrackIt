@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import UserContext from '../../contexts/UserContext';
 import CountContext from '../../contexts/CountContext';
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 import styled from 'styled-components'
 
-export default function AddHabit({setAddHabit, days, setDays, habitTitle, setHabitTitle}) {
+export default function AddHabit({setAddHabit, days, setDays, habitTitle, setHabitTitle, cancel, setCancel}) {
     const { user } = useContext(UserContext)
     const { count, setCount } = useContext(CountContext)
     const [isDisabled, setIsDisabled] = useState(false);
@@ -18,6 +18,12 @@ export default function AddHabit({setAddHabit, days, setDays, habitTitle, setHab
         { id: 6, name: "S", days: 5, isSelected: false},
         { id: 7, name: "S", days: 6, isSelected: false}
     ])
+
+    console.log("teste",cancel)
+    useEffect(() => {
+        if (cancel !== null){
+        cancel.forEach(id => selectDay(id))
+    }},[cancel])
 
     function selectDay(dayId) {
         const newWeekdays = weekdays.map( week => {
@@ -46,7 +52,7 @@ export default function AddHabit({setAddHabit, days, setDays, habitTitle, setHab
             setIsDisabled(false)
             setAddHabit(false)
             setCount(count+1)
-            setDays(null)
+            setCancel(null)
             setHabitTitle("")
         })
 
@@ -59,9 +65,10 @@ export default function AddHabit({setAddHabit, days, setDays, habitTitle, setHab
     function cancelHabit() {
         setAddHabit(false)
         const cancelTitle = habitTitle
-        const cancelDays = days
-        console.log("dias cancelados",cancelDays)
-        setDays(cancelDays)
+        if (days !== null){
+            const dayToId = days.map(day => day+1)
+            setCancel(dayToId)
+        }
         setHabitTitle(cancelTitle)
     }
 

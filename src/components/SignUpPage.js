@@ -26,6 +26,8 @@ export default function SignUpPage() {
         request.catch( (error) => {
             alert("Tente novamente!")
             setIsDisabled(false)
+            history.push("/cadastro")
+            console.log(error)
         })
     }
 

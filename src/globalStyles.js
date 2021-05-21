@@ -61,9 +61,6 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         background: #FFF;
     }
-    .done {
-        background: green;
-    }
 `
 
 export default GlobalStyle;

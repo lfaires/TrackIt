@@ -17,6 +17,7 @@ export default function HabitsPage() {
     const [addHabit, setAddHabit] = useState(false);
     const [habitTitle, setHabitTitle] = useState("")
     const [days, setDays] = useState(null)
+    const [cancelDays, setCancelDays] = useState(null)
     const history = useHistory()
     
     function showFormAddHabit() {
@@ -49,7 +50,7 @@ export default function HabitsPage() {
                     <PlustIcon onClick={showFormAddHabit}/>
                 </div>
             </Heading>
-            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} setDays={setDays} days={days} habitTitle={habitTitle} setHabitTitle={setHabitTitle} /> : ""}
+            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} setDays={setDays} days={days} habitTitle={habitTitle} setHabitTitle={setHabitTitle} cancel={cancelDays} setCancel={setCancelDays} /> : ""}
             {habits.length === 0 ? 
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
