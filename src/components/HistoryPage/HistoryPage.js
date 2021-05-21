@@ -64,7 +64,7 @@ const Container = styled.div`
     .calendar{
         border-radius: 10px;
         border: none;
-        height: 402px; 
+        height: 380px; 
     }
     .done {
         background-color: #8CC654;

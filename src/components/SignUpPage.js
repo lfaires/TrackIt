@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import logotipo from '../assets/logotipo.png'
 
-export default function SignUpPage() {
+export default function SignUpPage({validURL, validEmail}) {
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
     const [email, setEmail] = useState("")
@@ -13,7 +13,16 @@ export default function SignUpPage() {
     const [isDisabled, setIsDisabled] = useState(false);
     const history = useHistory()
     
+    function validation() {
+        if (!validEmail(email) || email === ""){alert("Insira um email válido");return }
+        if (password === ""){alert("insira uma senha");return}
+        if (name === ""){alert("insira o nome do perfil");return}
+        if (!validURL(image) || image === ""){alert("Insira uma URL válida");return}
+        return true
+    }
+
     function signUp(){
+        if (!validation()){return}
         setIsDisabled(true)
         const body ={ email, name, image, password}
 

@@ -5,25 +5,32 @@ import { useState } from 'react';
 import Loader from 'react-loader-spinner'
 import logotipo from '../assets/logotipo.png';
 
-export default function LoginPage({setUser}) {
+export default function LoginPage({setUser, validEmail}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
     const [isDisabled, setIsDisabled] = useState(false);
 
+    function validation(){
+        if (!validEmail(email) || email === ""){alert("Insira um email válido");return} 
+        if (password === ""){alert("insira uma senha");return}
+        return true
+    }
+
     function login() {
+        if (!validation()){return}
         setIsDisabled(true);
         const body = {email, password};
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
-
-        //animação de loading
         
         request.then( response => {
             setUser(response.data);
+            const userSerialized = JSON.stringify(response.data)
+            localStorage.setItem("User",userSerialized)
             history.push("/hoje");
         })
         request.catch( () => {
-            alert("Houve algum erro, tente novamente!");
+            alert("Email ou senha inválidos!");
             setIsDisabled(false);
         })
     }
