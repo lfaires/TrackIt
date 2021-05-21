@@ -39,13 +39,14 @@ export default function HistoryPage() {
         <Container>
             <Heading>
                 <Title>Histórico</Title>
+                { histories.length === 0 ? <SubHeading>Em breve você poderá ver o histórico dos seus hábitos aqui!</SubHeading> : ""}
             </Heading>
-            <Calendar className={"calendar"} locale={'pt-br'} calendarType={'US'}
+            { histories.length !==0 ? <Calendar className={"calendar"} locale={'pt-br'} calendarType={'US'}
             tileClassName={({ date, view }) =>
             today.find((day) => day === dayjs(date).format("DD/MM/YYYY")) ? "" : (notAllHabitsDone.find((day) => day === dayjs(date).format("DD/MM/YYYY"))
               ? "not-done"
-              : (allHabitsDone.find((day) => day === dayjs(date).format("DD/MM/YYYY")) ? "done" : "all"))}/>
-        </Container>
+              : (allHabitsDone.find((day) => day === dayjs(date).format("DD/MM/YYYY")) ? "done" : "all"))}/>: ""}
+        </Container> 
         <Menu/>
         </>
     )
@@ -91,4 +92,10 @@ const Heading = styled.div`
 const Title = styled.span`
     font-size: 23px;
     color: #126BA5;
+`
+
+const SubHeading = styled.span`
+    margin-top: 17px; 
+    font-size: 18px;
+    color: #666;
 `
