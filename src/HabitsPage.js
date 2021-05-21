@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import { BsPlusSquareFill } from 'react-icons/bs'
@@ -14,6 +15,8 @@ export default function HabitsPage() {
     const { count } = useContext(CountContext)
     const [habits, setHabits] = useState([])
     const [addHabit, setAddHabit] = useState(false);
+    const [days, setDays] = useState(null)
+    const history = useHistory()
     
     function showFormAddHabit() {
         if (addHabit) { 
@@ -32,9 +35,9 @@ export default function HabitsPage() {
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
         
         request.then( response => setHabits(response.data))
+        request.catch( () => history.pushState("/habitos"))
     },[count])
-    
-    console.log("muda o valor?",habits)
+    console.log("deposi de cancelar", days)
     return (
         <>
         <Header/>
@@ -45,7 +48,7 @@ export default function HabitsPage() {
                     <PlustIcon onClick={showFormAddHabit}/>
                 </div>
             </Heading>
-            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} /> : ""}
+            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} setDays={setDays} days={days} /> : ""}
             {habits.length === 0 ? 
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!

@@ -11,7 +11,7 @@ import CountContext from './contexts/CountContext';
 
 export default function TodayPage() {
     const { user } = useContext(UserContext)
-    const { count, setCount } = useContext(CountContext)
+    const { count} = useContext(CountContext)
     const { progress, setProgress } = useContext(ProgressContext)
     const [habits, setHabits] = useState([])
     const now = dayjs()
@@ -24,7 +24,7 @@ export default function TodayPage() {
         { id:5, name: "Sexta" },
         { id:6, name: "Sábado" },
     ]
-   
+   console.log("tela hoje", habits)
     function weekday() {
         const dayOfWeek = daysOfweek.filter( item => item.id === now.day())
         return dayOfWeek[0].name
@@ -53,10 +53,17 @@ export default function TodayPage() {
             const p = ndone/total
             setProgress(p)
         })
-        request.catch(()=>alert("tenta novamente!"))
-    }
-        ,[count])
+        request.catch(()=>alert("tenta novamente!"))},[count])
    
+        function selectHabit(idHabit) {
+            const newHabits = habits.map( habit => {
+                if(habit.id === idHabit){
+                    habit.done = !habit.done
+                }
+                return habit
+            })
+            setHabits(newHabits)
+         }
     return (
         <>
         <Header />
@@ -65,7 +72,7 @@ export default function TodayPage() {
                 <Title>{weekday()}, {now.format("DD/MM")}</Title>
                 {habits.reduce((acc,item) => acc || item.done, false) ? <Tracker selected>{progressHabit()}% dos hábitos concluídos</Tracker> :<Tracker>Nenhum hábito concluído ainda</Tracker>}
             </Heading>
-            { habits.map( habit => <HabitItem key={habit.id} habit={habit} setCount={setCount} count={count} />)}
+           {habits.map( habit => <HabitItem key={habit.id} habit={habit} selectHabit={selectHabit} />)}
         </Container>
         <Menu/>
         </>
