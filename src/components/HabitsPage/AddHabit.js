@@ -5,10 +5,9 @@ import axios from 'axios'
 import Loader from 'react-loader-spinner'
 import styled from 'styled-components'
 
-export default function AddHabit({setAddHabit, days, setDays}) {
+export default function AddHabit({setAddHabit, days, setDays, habitTitle, setHabitTitle}) {
     const { user } = useContext(UserContext)
     const { count, setCount } = useContext(CountContext)
-    const [habitTitle, setHabitTitle] = useState("")
     const [isDisabled, setIsDisabled] = useState(false);
     const [weekdays, setWeekdays] = useState([
         { id: 1, name: "D", days: 0, isSelected: false},
@@ -48,6 +47,7 @@ export default function AddHabit({setAddHabit, days, setDays}) {
             setAddHabit(false)
             setCount(count+1)
             setDays(null)
+            setHabitTitle("")
         })
 
         request.catch( () => {
@@ -62,6 +62,7 @@ export default function AddHabit({setAddHabit, days, setDays}) {
         const cancelDays = days
         console.log("dias cancelados",cancelDays)
         setDays(cancelDays)
+        setHabitTitle(cancelTitle)
     }
 
     return (

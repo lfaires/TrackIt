@@ -15,6 +15,7 @@ export default function HabitsPage() {
     const { count } = useContext(CountContext)
     const [habits, setHabits] = useState([])
     const [addHabit, setAddHabit] = useState(false);
+    const [habitTitle, setHabitTitle] = useState("")
     const [days, setDays] = useState(null)
     const history = useHistory()
     
@@ -48,13 +49,12 @@ export default function HabitsPage() {
                     <PlustIcon onClick={showFormAddHabit}/>
                 </div>
             </Heading>
-            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} setDays={setDays} days={days} /> : ""}
+            { addHabit ? <AddHabit setAddHabit={setAddHabit} count={count} setDays={setDays} days={days} habitTitle={habitTitle} setHabitTitle={setHabitTitle} /> : ""}
             {habits.length === 0 ? 
             <SubHeading>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </SubHeading> : 
-            habits.map( habit => <ListHabit key={habit.id} habit={habit} />)}
-            
+            habits.map( habit => <ListHabit key={habit.id} habit={habit} />)}  
         </Container>
         <Menu/>
         </>
@@ -67,6 +67,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin: 70px 0px;
+    margin-bottom: 97px;
     padding: 28px 18px 0 18px;
     background: #F2F2F2;
 `

@@ -31,7 +31,7 @@ export default function Menu() {
         </Options>
         <Today onClick={goToTodayPage}>
             <CircularProgressbar 
-            value={percentage} strokeWidth={10} text={'Hoje'}
+            value={percentage === "NaN" ? 0 : percentage} strokeWidth={10} text={'Hoje'}
             styles={buildStyles({
                 pathColor: `rgb(255, 255, 255)`,
                 strokeLinecap: 'round',
