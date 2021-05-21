@@ -58,6 +58,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin: 70px 0px;
+    margin-bottom: 107px;
     padding: 28px 18px 0 18px;
     background: #F2F2F2;
 

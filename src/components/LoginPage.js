@@ -25,8 +25,6 @@ export default function LoginPage({setUser, validEmail}) {
         
         request.then( response => {
             setUser(response.data);
-            const userSerialized = JSON.stringify(response.data)
-            localStorage.setItem("User",userSerialized)
             history.push("/hoje");
         })
         request.catch( () => {

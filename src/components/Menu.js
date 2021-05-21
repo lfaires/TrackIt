@@ -27,9 +27,7 @@ export default function Menu() {
         <>
         <Options>
             <Option onClick={goToHabitsPage}>Hábitos</Option>
-            <Option onClick={goToHistoryPage}>Histórico</Option>
-        </Options>
-        <Today onClick={goToTodayPage}>
+            <Today onClick={goToTodayPage}>
             <CircularProgressbar 
             value={percentage === "NaN" ? 0 : percentage} strokeWidth={10} text={'Hoje'}
             styles={buildStyles({
@@ -40,7 +38,10 @@ export default function Menu() {
                 textColor: '#FFF',
             })}
             />    
-        </Today>
+            </Today>
+            <Option onClick={goToHistoryPage}>Histórico</Option>
+        </Options>
+        
         
         </>
     )
@@ -64,15 +65,13 @@ const Option = styled.button`
     align-items: center;
     padding: 0 31px;
     height: 100%;
+    width: 37.8vw;
 `
-
 const Today = styled.button`
-    position: fixed;
-    bottom: 10px;
-    left: 39vw;
+    margin-bottom: 40px;
     z-index: 3;
-    width: 91px;
-    height: 91px;
+    width: 24.4vw;
+    height: 24.4vw;
     background: #52B6FF;
     border-radius: 50%;
     display: flex;

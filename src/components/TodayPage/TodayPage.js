@@ -1,6 +1,7 @@
 import axios from 'axios'
 import dayjs from 'dayjs'
 import { useState, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import UserContext from '../../contexts/UserContext';
 import Header from '../Header'
@@ -10,6 +11,8 @@ import ProgressContext from '../../contexts/ProgressContext';
 import CountContext from '../../contexts/CountContext';
 
 export default function TodayPage() {
+    const userSerialized = localStorage.getItem("User")
+    const userDeserialized = JSON.parse(userSerialized)
     const { user } = useContext(UserContext)
     const { count} = useContext(CountContext)
     const { progress, setProgress } = useContext(ProgressContext)
@@ -24,7 +27,7 @@ export default function TodayPage() {
         { id:5, name: "Sexta" },
         { id:6, name: "Sábado" },
     ]
-   
+
     function weekday() {
         const dayOfWeek = daysOfweek.filter( item => item.id === now.day())
         return dayOfWeek[0].name
@@ -41,7 +44,6 @@ export default function TodayPage() {
                 Authorization: `Bearer ${user.token}`
             }
         }
-
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
 
         request.then( response => {

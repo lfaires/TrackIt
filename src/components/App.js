@@ -1,5 +1,5 @@
-import {BrowserRouter, Switch, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import { useState} from 'react'
 import GlobalStyle from '../globalStyles'
 import UserContext from '../contexts/UserContext';
 import CountContext from '../contexts/CountContext';
@@ -11,17 +11,9 @@ import HabitsPage from './HabitsPage/HabitsPage'
 import HistoryPage from './HistoryPage/HistoryPage'
 
 export default function App() {
-    const userSerialized = localStorage.getItem("User")
-    const userDeserialized = JSON.parse(userSerialized)
     const [user, setUser] = useState("")
     const [progress, setProgress] = useState(0)
     const [count, setCount] = useState(0)
-
-    useEffect( () => {
-        if(userDeserialized !== ""){
-            setUser(userDeserialized)
-        }
-    },[])
 
     function validURL(str) {
         var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
