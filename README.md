@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# 10º Projeto - Bootcamp Responde Aí: TrackIt 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Criar um app para gerenciar hábitos
 
-## Available Scripts
+![Badge](https://img.shields.io/github/license/lfaires/Instagram)
 
-In the project directory, you can run:
+### ✅ Requisitos
 
-### `npm start`
+* Aplicar o layout seguindo a imagem fornecida neste link https://www.figma.com/file/rrweaBwWqOc9pAzk288mKB/Projeto-Instagram?node-id=0%3A1
+* Utilize a fonte **Open Sans** na página. Como não é uma fonte padrão nos computadores, você terá que importá-la na página. Para isso, pesquise sobre como importar fontes usando o [Google Fonts](https://fonts.google.com/) e utilize na sua página.
+* Ao passar o mouse sobre o texto de um link, este deve ficar ligeiramente mais claro. Dica: pesquise por **filter brightness** para criar esse efeito.
+* Todas as notícias devem ser links. Não é necessário colocar links para as notícias reais, pode ser um link fake (ex: https://globo.com).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Status do Projeto:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+####  100% concluído
 
-### `npm test`
+### 🛠 Tecnologias
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-### `npm run build`
+* React
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Deploy:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://lfaires.github.io/Instagram/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Autor
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Feito por Luiz Aires 👋🏽 Entre em contato!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![Twitter Badge](https://img.shields.io/badge/-@lfaires4-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/lfaires4)](https://twitter.com/lfaires4) 
+[![Linkedin Badge](https://img.shields.io/badge/-Luiz_Fernando_Aires-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/lfaires4/)](https://www.linkedin.com/in/lfaires4/) 
+[![Gmail Badge](https://img.shields.io/badge/-lfaires@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:lfaires@gmail.com)](mailto:lfaires@gmail.com)
