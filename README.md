@@ -23,8 +23,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ### Deploy:
 
-https://lfaires.github.io/Instagram/
-
+https://projeto010-track-it.vercel.app/
 
 
 ### Autor
