@@ -8,10 +8,7 @@
 
 #### * Layout
 
-- Aplicar layout, seguindo figma fornecido
-
-    [TrackIt](https://www.figma.com/file/3r8MSf9dIPuFlvZHuHTZXF/TrackIt?node-id=0%3A1)
-
+- Aplicar layout, seguindo figma fornecido [Layout - TrackIt](https://www.figma.com/file/3r8MSf9dIPuFlvZHuHTZXF/TrackIt?node-id=0%3A1)
 - O CSS deve ser implementado utilizando **Styled Components**
 
 #### * Tela Login `(rota /)`
