@@ -2,16 +2,16 @@
 
 ## Criar um single page application para gerenciar hábitos
 
-![Badge](https://img.shields.io/github/license/lfaires/Instagram)
+![Badge](https://img.shields.io/github/license/lfaires/TrackIt)
 
 ### ✅ Requisitos
 
-#### * Layout
+#### Layout
 
 - Aplicar layout, seguindo figma fornecido [aqui - TrackIt](https://www.figma.com/file/3r8MSf9dIPuFlvZHuHTZXF/TrackIt?node-id=0%3A1)
 - O CSS deve ser implementado utilizando **Styled Components**
 
-#### * Tela Login `(rota /)`
+#### Tela Login `(rota /)`
 
 - Deve ser enviado o email e senha para a API conforme documentação
 - Enquanto estiver carregando, os campos e o botão devem ser desabilitados, conforme layout
@@ -19,7 +19,7 @@
 - Em caso de falha, deve ser exibido um alert informando para o usuário e os campos/botão devem ser habilitados novamente
 - Ao clicar no link para se cadastrar, o usuário deve ser redirecionado para a rota `/cadastro`
 
-#### * Tela Cadastro `(rota /cadastro)`
+#### Tela Cadastro `(rota /cadastro)`
 
 - Os dados devem ser enviados para a API conforme documentação
 - Enquanto estiver carregando, os campos e o botão devem ser desabilitados, conforme layout
@@ -27,7 +27,7 @@
 - Em caso de falha, deve ser exibido um alert informando para o usuário e os campos/botão devem ser habilitados novamente
 - Ao clicar no link para logar, o usuário deve ser redirecionado para a rota `/`
 
-#### * Topo e Menu 
+#### Topo e Menu 
 
 - Topo e menu devem ter posicionamento fixo
 - No topo deve ser exibida a foto do usuário conforme layout
@@ -39,7 +39,7 @@
 
     **OBS**: Esse progresso deve ser atualizado automaticamente conforme o usuário for concluindo os hábitos. Utilize ContextAPI para compartilhar esse estado globalmente entre os componentes.
 
-#### * Tela hábitos `(rota /habitos)`
+#### Tela hábitos `(rota /habitos)`
 
 - Carregar os hábitos do usuário, mandando request pra API conforme documentação e exibindo abaixo conforme layout
 - Ao clicar para deletar um hábito, deve ser exibido um `confirm` para confirmar se o usuário gostaria realmente de apagar o hábito. Se sim, deve ser enviado um request pra API conforme documentação e os hábitos recarregados logo em seguida.
@@ -52,7 +52,7 @@
 - Em caso de erro, os campos devem ser reabilitados e um alerta deve indicar o problema para o usuário
 - Ao Cancelar, o formulário deve ser escondido. Caso tenha dados já preenchidos, os mesmos devem ser mantidos caso o usuário reabra o formulário de criação.
 
-#### * Tela hoje `(rota /hoje)`
+#### Tela hoje `(rota /hoje)`
 
 - Carregar os hábitos de hoje do usuário, mandando request pra API conforme documentação e exibindo abaixo conforme layout
 - O título da tela deve exibir o dia de hoje conforme layout
@@ -61,7 +61,7 @@
 - Ao marcar um hábito como concluído, deve ser colocada em verde a contagem da sequência atual
 - Caso a sequência atual seja igual ao recorde do usuário, este também deve ser exibido em verde
 
-#### * Tela histórico `(rota /historico)`
+#### Tela histórico `(rota /historico)`
 
 - Nesta tela deve ser exibido um calendário, conforme layout. (Utilize a biblioteca `react-calendar`)
 - No calendário, deve ser exibido destacado em verde os dias em que o usuário completou todos os hábitos que deveria ter completado (ex: tinha 3 hábitos para fazer e completou os 3)
