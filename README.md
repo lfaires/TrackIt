@@ -1,6 +1,6 @@
 # 10º Projeto - Bootcamp Responde Aí: TrackIt 
 
-## Criar um app para gerenciar hábitos
+## Criar um single page application para gerenciar hábitos
 
 ![Badge](https://img.shields.io/github/license/lfaires/Instagram)
 
