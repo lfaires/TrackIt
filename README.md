@@ -52,6 +52,22 @@
 - Em caso de erro, os campos devem ser reabilitados e um alerta deve indicar o problema para o usuário
 - Ao Cancelar, o formulário deve ser escondido. Caso tenha dados já preenchidos, os mesmos devem ser mantidos caso o usuário reabra o formulário de criação.
 
+#### * Tela hoje `(rota /hoje)`
+
+- Carregar os hábitos de hoje do usuário, mandando request pra API conforme documentação e exibindo abaixo conforme layout
+- O título da tela deve exibir o dia de hoje conforme layout
+- No subtítulo deve ser exibida a frase "Nenhum hábito concluído ainda" ou "x% dos hábitos concluídos", dependendo do progresso do usuário
+- Ao marcar ou desmarcar um hábito como concluído, deve ser enviado um request pra API conforme documentação. Não é necessário colocar loading.
+- Ao marcar um hábito como concluído, deve ser colocada em verde a contagem da sequência atual
+- Caso a sequência atual seja igual ao recorde do usuário, este também deve ser exibido em verde
+
+#### * Tela histórico `(rota /historico)`
+
+- Nesta tela deve ser exibido um calendário, conforme layout. (Utilize a biblioteca `react-calendar`)
+- No calendário, deve ser exibido destacado em verde os dias em que o usuário completou todos os hábitos que deveria ter completado (ex: tinha 3 hábitos para fazer e completou os 3)
+- Já os dias que o usuário tinha hábitos para completar, porém não completou todos, devem ser destacados em vermelho (ex: tinha 3 hábitos pra fazer mas só completou 2)
+- Nos dias que o usuário não tinha nenhum hábito a concluir, não devem ser destacados (continuam com o fundo branco)
+ 
 ### Status do Projeto:
 
 ####  100% concluído
