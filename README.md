@@ -6,6 +6,27 @@
 
 ### ✅ Requisitos
 
+#### * Layout
+
+- Aplicar layout, seguindo figma fornecido
+
+    [TrackIt](https://www.figma.com/file/3r8MSf9dIPuFlvZHuHTZXF/TrackIt?node-id=0%3A1)
+
+- O CSS deve ser implementado utilizando **Styled Components**
+
+#### * Tela Login `(rota /)`
+
+- Deve ser enviado o email e senha para a API conforme documentação
+- Enquanto estiver carregando, os campos e o botão devem ser desabilitados, conforme layout
+- Em caso de sucesso, o usuário deve ser redirecionado para a rota `/hoje`
+- Em caso de falha, deve ser exibido um alert informando para o usuário e os campos/botão devem ser habilitados novamente
+- Ao clicar no link para se cadastrar, o usuário deve ser redirecionado para a rota `/cadastro`
+
+#### * Tela Cadastro
+
+#### * Layout
+
+#### * Layout
 * Aplicar o layout seguindo a imagem fornecida neste link https://www.figma.com/file/rrweaBwWqOc9pAzk288mKB/Projeto-Instagram?node-id=0%3A1
 * Utilize a fonte **Open Sans** na página. Como não é uma fonte padrão nos computadores, você terá que importá-la na página. Para isso, pesquise sobre como importar fontes usando o [Google Fonts](https://fonts.google.com/) e utilize na sua página.
 * Ao passar o mouse sobre o texto de um link, este deve ficar ligeiramente mais claro. Dica: pesquise por **filter brightness** para criar esse efeito.
