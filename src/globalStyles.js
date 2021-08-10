@@ -60,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
     button {
         border: none;
         background: #FFF;
+        cursor: pointer;
     }
 `
 
