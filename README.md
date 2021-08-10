@@ -1,88 +1,27 @@
-# 10º Projeto - Bootcamp Responde Aí: TrackIt 
-
-## Criar um single page application para gerenciar hábitos
-
+# TrackIt 
 ![Badge](https://img.shields.io/github/license/lfaires/TrackIt)
 
-### ✅ Requisitos
+This app is a simple habits manager. You can track your habits.  
 
-#### Layout
+<img src="./src/assets/trackit.gif" />
+Try it out now at https://trackit-lfaires.vercel.app/
 
-- Aplicar layout, seguindo figma fornecido [aqui - TrackIt](https://www.figma.com/file/3r8MSf9dIPuFlvZHuHTZXF/TrackIt?node-id=0%3A1)
-- O CSS deve ser implementado utilizando **Styled Components**
+## About 
+---
+Below are the implemented features:
 
-#### Tela Login `(rota /)`
+- Sign Up
+- Login
+- List all today's habits in today screen
+- Add and remove habits in habits screen
+- See habits historic in historic screen
 
-- Deve ser enviado o email e senha para a API conforme documentação
-- Enquanto estiver carregando, os campos e o botão devem ser desabilitados, conforme layout
-- Em caso de sucesso, o usuário deve ser redirecionado para a rota `/hoje`
-- Em caso de falha, deve ser exibido um alert informando para o usuário e os campos/botão devem ser habilitados novamente
-- Ao clicar no link para se cadastrar, o usuário deve ser redirecionado para a rota `/cadastro`
-
-#### Tela Cadastro `(rota /cadastro)`
-
-- Os dados devem ser enviados para a API conforme documentação
-- Enquanto estiver carregando, os campos e o botão devem ser desabilitados, conforme layout
-- Em caso de sucesso, o usuário deve ser redirecionado para a rota `/`
-- Em caso de falha, deve ser exibido um alert informando para o usuário e os campos/botão devem ser habilitados novamente
-- Ao clicar no link para logar, o usuário deve ser redirecionado para a rota `/`
-
-#### Topo e Menu 
-
-- Topo e menu devem ter posicionamento fixo
-- No topo deve ser exibida a foto do usuário conforme layout
-
-    **OBS**: Utilize ContextAPI para compartilhar o estado do usuário logado globalmente entre os componentes.
-
-- No menu, os 3 botões de Hábitos, Hoje e Histórico devem redirecionar o usuário para as rotas `/habitos`, `/hoje` e `/historico` respectivamente
-- O botão de Hoje deve exibir uma barra de progresso circular indicando a porcentagem de conclusão de hábitos de hoje do usuário
-
-    **OBS**: Esse progresso deve ser atualizado automaticamente conforme o usuário for concluindo os hábitos. Utilize ContextAPI para compartilhar esse estado globalmente entre os componentes.
-
-#### Tela hábitos `(rota /habitos)`
-
-- Carregar os hábitos do usuário, mandando request pra API conforme documentação e exibindo abaixo conforme layout
-- Ao clicar para deletar um hábito, deve ser exibido um `confirm` para confirmar se o usuário gostaria realmente de apagar o hábito. Se sim, deve ser enviado um request pra API conforme documentação e os hábitos recarregados logo em seguida.
-- Caso o usuário não tenha nenhum hábito cadastrado, deve ser exibido o texto conforme layout
-- Ao clicar no botão de "+", deve-se exibir um formulário de cadastro de hábito logo abaixo do título conforme layout
-- O usuário deve inserir o nome do hábito em um campo de texto e selecionar os dias da semana que deseja realizar o hábito conforme layout
-- Ao salvar, devem ser enviados os dados para API conforme documentação
-- Enquanto estiver carregando, o campo de texto e o botão devem ser desabilitados, conforme layout. Os botões dos dias da semana devem ser desabilitados, porém não é necessária mudança visual durante o loading.
-- Em caso de sucesso, os campos devem ser limpos e reabilitados, o formulário deve ser escondido novamente e a lista de hábitos abaixo recarregada
-- Em caso de erro, os campos devem ser reabilitados e um alerta deve indicar o problema para o usuário
-- Ao Cancelar, o formulário deve ser escondido. Caso tenha dados já preenchidos, os mesmos devem ser mantidos caso o usuário reabra o formulário de criação.
-
-#### Tela hoje `(rota /hoje)`
-
-- Carregar os hábitos de hoje do usuário, mandando request pra API conforme documentação e exibindo abaixo conforme layout
-- O título da tela deve exibir o dia de hoje conforme layout
-- No subtítulo deve ser exibida a frase "Nenhum hábito concluído ainda" ou "x% dos hábitos concluídos", dependendo do progresso do usuário
-- Ao marcar ou desmarcar um hábito como concluído, deve ser enviado um request pra API conforme documentação. Não é necessário colocar loading.
-- Ao marcar um hábito como concluído, deve ser colocada em verde a contagem da sequência atual
-- Caso a sequência atual seja igual ao recorde do usuário, este também deve ser exibido em verde
-
-#### Tela histórico `(rota /historico)`
-
-- Nesta tela deve ser exibido um calendário, conforme layout. (Utilize a biblioteca `react-calendar`)
-- No calendário, deve ser exibido destacado em verde os dias em que o usuário completou todos os hábitos que deveria ter completado (ex: tinha 3 hábitos para fazer e completou os 3)
-- Já os dias que o usuário tinha hábitos para completar, porém não completou todos, devem ser destacados em vermelho (ex: tinha 3 hábitos pra fazer mas só completou 2)
-- Nos dias que o usuário não tinha nenhum hábito a concluir, não devem ser destacados (continuam com o fundo branco)
+## Technologies 
+The following tools and frameworks were used in the construction of the project:<br>
+<p>
+  <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+</p>
  
-### Status do Projeto:
-
-100% concluído
-
-### 🛠 Tecnologias
-
-As seguintes ferramentas foram usadas na construção do projeto:
-
-<img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
-
-### Deploy:
-
-https://projeto010-track-it.vercel.app/
-
-
 ### Autor
 ---
 
