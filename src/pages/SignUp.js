@@ -1,11 +1,12 @@
-import { useState} from 'react'
-import styled from 'styled-components'
-import axios from 'axios'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 import Loader from 'react-loader-spinner'
-import logotipo from '../assets/logotipo.png'
 
-export default function SignUpPage({validURL, validEmail}) {
+import logotipo from '../assets/images/logotipo.png';
+
+export default function SignUp({validURL, validEmail}) {
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
     const [email, setEmail] = useState("")

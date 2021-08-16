@@ -1,14 +1,15 @@
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import { useState} from 'react'
-import GlobalStyle from '../globalStyles'
-import UserContext from '../contexts/UserContext';
-import CountContext from '../contexts/CountContext';
-import ProgressContext from '../contexts/ProgressContext';
-import LoginPage from './LoginPage'
-import SignUpPage from './SignUpPage'
-import TodayPage from './TodayPage/TodayPage'
-import HabitsPage from './HabitsPage/HabitsPage'
-import HistoryPage from './HistoryPage/HistoryPage'
+import React, { useState } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Today from './pages/Today/Today';
+import Habits from './pages/Habits/Habits';
+import History from './pages/History';
+
+import UserContext from './contexts/UserContext';
+import CountContext from './contexts/CountContext';
+import ProgressContext from './contexts/ProgressContext';
 
 export default function App() {
     const [user, setUser] = useState("")
@@ -32,25 +33,24 @@ export default function App() {
 
     return(
        <BrowserRouter>
-            <GlobalStyle/>
             <UserContext.Provider value={{user, setUser}}>
             <CountContext.Provider value={{count, setCount}}>
             <ProgressContext.Provider value={{progress, setProgress}}>
                 <Switch>
                     <Route path="/" exact={true}>
-                        <LoginPage setUser={setUser} validEmail={validEmail}/>
+                        <Login setUser={setUser} validEmail={validEmail}/>
                     </Route>
                     <Route path="/cadastro" exact={true}>
-                        <SignUpPage validURL={validURL} validEmail={validEmail}/>
+                        <SignUp validURL={validURL} validEmail={validEmail}/>
                     </Route>
                     <Route path="/hoje" exact={true}>
-                        <TodayPage />
+                        <Today />
                     </Route>
                     <Route path="/habitos" exact={true}>
-                        <HabitsPage />
+                        <Habits />
                     </Route>
                     <Route path="/historico" exact={true}>
-                        <HistoryPage />
+                        <History />
                     </Route>
                 </Switch>
             </ProgressContext.Provider>

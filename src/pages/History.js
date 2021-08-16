@@ -1,14 +1,16 @@
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import Calendar from 'react-calendar'
-import axios from 'axios'
+import Calendar from 'react-calendar';
+import axios from 'axios';
 import 'react-calendar/dist/Calendar.css';
 import dayjs from 'dayjs'
-import Header from '../Header'
-import Menu from '../Menu'
-import { useEffect, useState, useContext } from 'react'
-import UserContext from '../../contexts/UserContext';
 
-export default function HistoryPage() {
+import Header from '../components/Header'
+import Menu from '../components/Menu'
+
+import UserContext from '../contexts/UserContext';
+
+export default function History() {
     const { user } = useContext(UserContext)
     const [histories, setHistories] = useState([])
     const today = [dayjs().format("DD/MM/YYYY")]

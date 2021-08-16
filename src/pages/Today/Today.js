@@ -1,16 +1,18 @@
-import axios from 'axios'
-import dayjs from 'dayjs'
-import { useState, useContext, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import dayjs from 'dayjs';
+import styled from 'styled-components';
+
+
+import Header from '../../components/Header';
+import Menu from '../../components/Menu';
+import HabitItem from './HabitItem';
+
 import UserContext from '../../contexts/UserContext';
-import Header from '../Header'
-import Menu from '../Menu'
-import HabitItem from './HabitItem'
 import ProgressContext from '../../contexts/ProgressContext';
 import CountContext from '../../contexts/CountContext';
 
-export default function TodayPage() {
+export default function Today() {
     const userSerialized = localStorage.getItem("User")
     const userDeserialized = JSON.parse(userSerialized)
     const { user } = useContext(UserContext)

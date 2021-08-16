@@ -1,16 +1,18 @@
-import { useState, useContext, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
-import styled from 'styled-components'
-import { BsPlusSquareFill } from 'react-icons/bs'
-import Header from '../Header'
-import Menu from '../Menu'
-import AddHabit from './AddHabit'
-import ListHabit from './ListHabit'
+import React, { useState, useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import styled from 'styled-components';
+import { BsPlusSquareFill } from 'react-icons/bs';
+
+import Header from '../../components/Header';
+import Menu from '../../components/Menu';
+import AddHabit from './AddHabit';
+import ListHabit from './ListHabit';
+
 import UserContext from '../../contexts/UserContext';
 import CountContext from '../../contexts/CountContext';
 
-export default function HabitsPage() {
+export default function Habits() {
     const { user } = useContext(UserContext)
     const { count } = useContext(CountContext)
     const [habits, setHabits] = useState([])

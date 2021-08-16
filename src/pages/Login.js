@@ -1,11 +1,12 @@
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
-import { useState } from 'react';
-import Loader from 'react-loader-spinner'
-import logotipo from '../assets/logotipo.png';
+import Loader from 'react-loader-spinner';
 
-export default function LoginPage({setUser, validEmail}) {
+import logotipo from '../assets/images/logotipo.png';
+
+export default function Login({setUser, validEmail}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
