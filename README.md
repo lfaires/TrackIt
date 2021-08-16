@@ -1,17 +1,13 @@
-**# TrackIt**
-
+# TrackIt 
 ![Badge](https://img.shields.io/github/license/lfaires/TrackIt)
 
-This app is a simple habits manager. You can track your habits.
+This app is a simple habits manager. You can track your habits.  
 
-<img src="./src/assets/trackit.gif" />
-
+<img src="./src/assets/images/trackit.gif" />
 Try it out now at https://trackit-lfaires.vercel.app/
 
-**## About**
-
-- --
-
+## About 
+---
 Below are the implemented features:
 
 - Sign Up
@@ -20,23 +16,14 @@ Below are the implemented features:
 - Add and remove habits in habits screen
 - See habits historic in historic screen
 
-**## Technologies**
-
+## Technologies 
 The following tools and frameworks were used in the construction of the project:<br>
-
 <p>
-
-<img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
-
+  <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
 </p>
-
-**### Autor**
-
-- --
-
-**#### Feito por Luiz Aires 👋🏽 Entre em contato!**
-
-[![Twitter Badge](https://img.shields.io/badge/-@lfaires4-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/lfaires4)](https://twitter.com/lfaires4)
+ 
+### Autor
+---
 
 [![Linkedin Badge](https://img.shields.io/badge/-Luiz_Fernando_Aires-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/lfaires4/)](https://www.linkedin.com/in/lfaires4/)
 
