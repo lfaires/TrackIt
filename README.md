@@ -7,7 +7,7 @@ This app is a simple habits manager. You can track your habits.
 Try it out now at https://trackit-lfaires.vercel.app/
 
 ## About 
----
+
 Below are the implemented features:
 
 - Sign Up
