@@ -22,7 +22,25 @@ The following tools and frameworks were used in the construction of the project:
   <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
 </p>
  
-### Autor
+## How to run
+
+1. Clone this repository
+2. Create a .env file in the project root
+3. Copy this API https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit in your .env file. You can see the .env.example. 
+4. Install dependencies
+```bash
+npm i
+```
+5. Run the front-end with
+```bash
+npm start
+```
+6. You can optionally build the project running
+```bash
+npm run build
+```
+
+## Autor
 ---
 
 [![Linkedin Badge](https://img.shields.io/badge/-Luiz_Fernando_Aires-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/lfaires4/)](https://www.linkedin.com/in/lfaires4/)
