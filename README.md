@@ -14,7 +14,7 @@ Below are the implemented features:
 - Login
 - List all today's habits in today screen
 - Add and remove habits in habits screen
-- See habits historic in historic screen
+- See habits history in history screen
 
 ## Technologies 
 The following tools and frameworks were used in the construction of the project:<br>
