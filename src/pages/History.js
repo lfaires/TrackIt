@@ -15,43 +15,57 @@ export default function History() {
     const [histories, setHistories] = useState([])
     const today = [dayjs().format("DD/MM/YYYY")]
 
-    useEffect(() => {
-        const config ={
-            headers: {
-                Authorization: `Bearer ${user.token}`
-            }
-        }
-        const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/history/daily", config)
+  useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    };
+    const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}/habits/history/daily`, config)
 
-        request.then( response => setHistories(response.data))
-    }, [])
+    request.then( response => setHistories(response.data))
+  }, [])
     
-    function check() {
-        const checked = histories.map( day => {
-           return {day: day.day,allDone: day.habits.reduce( (acc,habit) => (acc && habit.done) ,true)}
-        })
-        return checked
-    }
-    const allHabitsDone = check().filter(habit => habit.allDone).map( day => day.day)
-    const notAllHabitsDone = check().filter(habit => !habit.allDone).map( day => day.day)
+  function check() {
+    const checked = histories.map( day => {
+        return {day: day.day,allDone: day.habits.reduce( (acc,habit) => (acc && habit.done) ,true)}
+    })
+    return checked
+  }
+  const allHabitsDone = check().filter(habit => habit.allDone).map( day => day.day)
+  const notAllHabitsDone = check().filter(habit => !habit.allDone).map( day => day.day)
   
-    return (
-        <>
-        <Header />
-        <Container>
-            <Heading>
-                <Title>Histórico</Title>
-                { histories.length === 0 ? <SubHeading>Em breve você poderá ver o histórico dos seus hábitos aqui!</SubHeading> : ""}
-            </Heading>
-            { histories.length !==0 ? <Calendar className={"calendar"} locale={'pt-br'} calendarType={'US'}
-            tileClassName={({ date, view }) =>
-            today.find((day) => day === dayjs(date).format("DD/MM/YYYY")) ? "" : (notAllHabitsDone.find((day) => day === dayjs(date).format("DD/MM/YYYY"))
-              ? "not-done"
-              : (allHabitsDone.find((day) => day === dayjs(date).format("DD/MM/YYYY")) ? "done" : "all"))}/>: ""}
-        </Container> 
-        <Menu/>
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <Container>
+        <Heading>
+            <Title>Histórico</Title>
+            { histories.length === 0 
+              ? <SubHeading>Em breve você poderá ver o histórico dos seus hábitos aqui!</SubHeading> 
+              : ""
+            }
+        </Heading>
+        { histories.length !==0 
+          ? <Calendar 
+              className={"calendar"} 
+              locale={'pt-br'} 
+              calendarType={'US'}
+              tileClassName={({ date, view }) => 
+                today.find((day) => day === dayjs(date).format("DD/MM/YYYY")) 
+                ? "" 
+                : (notAllHabitsDone.find((day) => day === dayjs(date).format("DD/MM/YYYY"))
+                  ? "not-done"
+                  : (allHabitsDone.find((day) => day === dayjs(date).format("DD/MM/YYYY")) 
+                    ? "done" 
+                    : "all"))}
+            /> 
+          : ""
+        }
+      </Container> 
+      <Menu/>
+    </>
+  )
 }
 
 const Container = styled.div`
@@ -85,20 +99,19 @@ const Container = styled.div`
         height:46px;
         width: 46px;
   }
-`
+`;
 const Heading = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: 28px;
-`
+`;
 const Title = styled.span`
     font-size: 23px;
     color: #126BA5;
-`
-
+`;
 const SubHeading = styled.span`
     margin-top: 17px; 
     font-size: 18px;
     color: #666;
-`
+`;
